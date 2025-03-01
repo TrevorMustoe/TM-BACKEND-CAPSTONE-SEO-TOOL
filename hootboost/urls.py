@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from hootboostapi.views import UserView, NotesView, KeywordView,WebsiteView
+from hootboostapi.views import UserView, NotesView, KeywordView,WebsiteView, Audit_resultView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'user', UserView, 'user')
 router.register(r'note', NotesView, 'note')
 router.register(r'keyword', KeywordView, 'keyword')
 router.register(r'website', WebsiteView, 'website')
+router.register(r'audit_result', Audit_resultView, 'audit_result')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
