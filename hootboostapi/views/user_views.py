@@ -28,6 +28,20 @@ class UserView(ViewSet):
         user = User.objects.all()
         serializer = UserSerializer(user, many=True)
         return Response(serializer.data)
+      
+    def create(self, request):
+        """Handle POST operations
+
+        Returns
+            Response -- JSON serialized game instance
+        """
+
+        user = User.objects.create(
+            username=request.data["username"],
+            company_name=request.data["company_name"],
+        )
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
                 
 class UserSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
