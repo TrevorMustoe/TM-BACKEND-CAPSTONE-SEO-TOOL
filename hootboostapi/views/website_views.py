@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from hootboostapi.models import Website
+from hootboostapi.models import Website, User
 
 
 class WebsiteView(ViewSet):
@@ -28,6 +28,23 @@ class WebsiteView(ViewSet):
         website = Website.objects.all()
         serializer = WebsiteSerializer(website, many=True)
         return Response(serializer.data)
+      
+    def create(self, request):
+          """Handle POST operations
+
+          Returns
+              Response -- JSON serialized game instance
+          """
+          user = User.objects.get(id=request.data["user_id"])
+
+
+          website = Website.objects.create(
+              url=request.data["url"],
+              site_name=request.data["site_name"],
+              user_id=user,
+          )
+          serializer = WebsiteSerializer(website)
+          return Response(serializer.data)
                 
 class WebsiteSerializer(serializers.ModelSerializer):
     """JSON serializer for game types

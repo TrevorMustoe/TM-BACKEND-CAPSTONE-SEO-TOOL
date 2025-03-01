@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from hootboostapi.models import Keyword
+from hootboostapi.models import Keyword, User
 
 
 class KeywordView(ViewSet):
@@ -27,6 +27,22 @@ class KeywordView(ViewSet):
         """
         keyword = Keyword.objects.all()
         serializer = KeywordSerializer(keyword, many=True)
+        return Response(serializer.data)
+      
+    def create(self, request):
+        """Handle POST operations
+
+        Returns
+            Response -- JSON serialized game instance
+        """
+        user = User.objects.get(id=request.data["user_id"])
+
+
+        keyword = Keyword.objects.create(
+            target_keyword=request.data["target_keyword"],
+            user_id=user,
+        )
+        serializer = KeywordSerializer(keyword)
         return Response(serializer.data)
                 
 class KeywordSerializer(serializers.ModelSerializer):

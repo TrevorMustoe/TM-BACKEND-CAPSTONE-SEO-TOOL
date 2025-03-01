@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from hootboostapi.models import Audit_result
+from hootboostapi.models import Audit_result, Website, User, Notes
 
 
 class Audit_resultView(ViewSet):
@@ -27,6 +27,31 @@ class Audit_resultView(ViewSet):
         """
         audit_result = Audit_result.objects.all()
         serializer = Audit_resultSerializer(audit_result, many=True)
+        return Response(serializer.data)
+      
+    def create(self, request):
+        """Handle POST operations
+
+        Returns
+            Response -- JSON serialized game instance
+        """
+        user = User.objects.get(id=request.data["user_id"])
+        website = Website.objects.get(id=request.data["website_id"])
+        audit_notes = Notes.objects.get(id=request.data["audit_notes_id"])
+
+
+        audit_result = Audit_result.objects.create(
+            website_id=website,
+            title_tag=request.data["title_tag"],
+            meta_desc_found=request.data["meta_desc_found"],
+            heading_tags_found=request.data["heading_tags_found"],
+            keyword_page_frequency=request.data["keyword_page_frequency"],
+            created_at=request.data["created_at"],
+            score=request.data["score"],
+            audit_notes=audit_notes,
+            user_id=user
+        )
+        serializer = Audit_resultSerializer(audit_result)
         return Response(serializer.data)
                 
 class Audit_resultSerializer(serializers.ModelSerializer):
