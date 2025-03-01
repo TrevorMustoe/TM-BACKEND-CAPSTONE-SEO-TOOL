@@ -1,0 +1,37 @@
+"""View module for handling requests about game types"""
+from django.http import HttpResponseServerError
+from rest_framework.viewsets import ViewSet
+from rest_framework.response import Response
+from rest_framework import serializers, status
+from hootboostapi.models import Website
+
+
+class WebsiteView(ViewSet):
+    """HootBoost Website view"""
+
+    def retrieve(self, request, pk):
+        """Handle GET requests for single website info
+
+        Returns:
+            Response -- JSON serialized website info
+        """
+        website = Website.objects.get(pk=pk)
+        serializer = WebsiteSerializer(website)
+        return Response(serializer.data)
+
+    def list(self, request):
+        """Handle GET requests to get all website info
+
+        Returns:
+            Response -- JSON serialized list of website info
+        """
+        website = Website.objects.all()
+        serializer = WebsiteSerializer(website, many=True)
+        return Response(serializer.data)
+                
+class WebsiteSerializer(serializers.ModelSerializer):
+    """JSON serializer for game types
+    """
+    class Meta:
+        model = Website
+        fields = ('id', 'url', 'site_name', 'user_id')
