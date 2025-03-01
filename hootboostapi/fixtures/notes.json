@@ -1,0 +1,18 @@
+[
+  {
+      "model": "hootboostapi.notes",
+      "pk": 1,
+      "fields": {
+          "note": "Update new keywords for upcoming campaign.",
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.notes",
+      "pk": 2,
+      "fields": {
+          "note": "Review website performance and adjust SEO strategy.",
+          "user_id": 2
+      }
+  }
+]

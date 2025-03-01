@@ -1,0 +1,32 @@
+[
+  {
+      "model": "hootboostapi.audit_result",
+      "pk": 1,
+      "fields": {
+          "website_id": 1,
+          "title_tag": true,
+          "meta_desc_found": false,
+          "heading_tags_found": "H1, H2",
+          "keyword_page_frequency": 5,
+          "created_at": "2024-02-29T14:00:00Z",
+          "score": 78,
+          "audit_notes": 1,
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.audit_result",
+      "pk": 2,
+      "fields": {
+          "website_id": 2,
+          "title_tag": false,
+          "meta_desc_found": true,
+          "heading_tags_found": "H1, H3, H4",
+          "keyword_page_frequency": 3,
+          "created_at": "2024-02-29T15:30:00Z",
+          "score": 85,
+          "audit_notes": 2,
+          "user_id": 2
+      }
+  }
+]
