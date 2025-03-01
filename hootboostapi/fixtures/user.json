@@ -1,0 +1,19 @@
+[
+  {
+      "model": "hootboostapi.user",
+      "pk": 1,
+      "fields": {
+          "username": "johncena",
+          "company_name": "You Can't See Me Inc."
+      }
+  },
+  {
+      "model": "hootboostapi.user",
+      "pk": 2,
+      "fields": {
+          "username": "the_rock",
+          "company_name": "Rock Solid Enterprises"
+      }
+  }
+  
+]

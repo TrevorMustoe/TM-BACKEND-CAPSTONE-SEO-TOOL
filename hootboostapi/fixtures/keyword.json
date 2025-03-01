@@ -1,0 +1,82 @@
+[
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 1,
+      "fields": {
+          "target_keyword": "invisible",
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 2,
+      "fields": {
+          "target_keyword": "hustle",
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 3,
+      "fields": {
+          "target_keyword": "loyalty",
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 4,
+      "fields": {
+          "target_keyword": "respect",
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 5,
+      "fields": {
+          "target_keyword": "champion",
+          "user_id": 1
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 6,
+      "fields": {
+          "target_keyword": "hello",
+          "user_id": 2
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 7,
+      "fields": {
+          "target_keyword": "people",
+          "user_id": 2
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 8,
+      "fields": {
+          "target_keyword": "rock",
+          "user_id": 2
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 9,
+      "fields": {
+          "target_keyword": "smackdown",
+          "user_id": 2
+      }
+  },
+  {
+      "model": "hootboostapi.keyword",
+      "pk": 10,
+      "fields": {
+          "target_keyword": "cool",
+          "user_id": 2
+      }
+  }
+]
