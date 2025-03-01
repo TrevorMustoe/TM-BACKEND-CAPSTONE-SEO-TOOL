@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TunaapiConfig(AppConfig):
+class HootBoostConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'tunaapi'
+    name = 'hootboostapi'
