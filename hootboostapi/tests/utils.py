@@ -2,7 +2,7 @@ import random
 
 from faker import Faker
 
-from tunaapi.models import Artist, Song, Genre, SongGenre
+from hootboostapi.models import Artist, Song, Genre, SongGenre
 
 
 def create_data(cls):

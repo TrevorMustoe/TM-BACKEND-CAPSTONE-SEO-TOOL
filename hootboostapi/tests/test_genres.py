@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from tunaapi.models import Genre, SongGenre
+from hootboostapi.models import Genre, SongGenre
 
 from .utils import create_data, refresh_data
 
