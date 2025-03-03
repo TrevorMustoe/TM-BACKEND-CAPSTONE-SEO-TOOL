@@ -78,6 +78,11 @@ class Audit_resultView(ViewSet):
         audit_result.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+      
+    def destroy(self, request, pk):
+        audit_result = Audit_result.objects.get(pk=pk)
+        audit_result.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class Audit_resultSerializer(serializers.ModelSerializer):
     """JSON serializer for game types

@@ -60,6 +60,11 @@ class NotesView(ViewSet):
         notes.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+      
+    def destroy(self, request, pk):
+        notes = Notes.objects.get(pk=pk)
+        notes.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class NotesSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
