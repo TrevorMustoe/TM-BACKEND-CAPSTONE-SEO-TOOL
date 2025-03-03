@@ -45,6 +45,23 @@ class WebsiteView(ViewSet):
           )
           serializer = WebsiteSerializer(website)
           return Response(serializer.data)
+        
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        website = Website.objects.get(pk=pk)
+        website.url = request.data["url"]
+        website.site_name = request.data["site_name"]
+        
+        user = User.objects.get(pk=request.data["user_id"])
+        website.user_id = user
+        website.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class WebsiteSerializer(serializers.ModelSerializer):
     """JSON serializer for game types

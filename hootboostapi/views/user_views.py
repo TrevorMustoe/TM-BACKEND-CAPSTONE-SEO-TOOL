@@ -42,6 +42,21 @@ class UserView(ViewSet):
         )
         serializer = UserSerializer(user)
         return Response(serializer.data)
+      
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        user = User.objects.get(pk=pk)
+        user.username = request.data["username"]
+        user.company_name = request.data["company_name"]
+        user.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
                 
 class UserSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
