@@ -44,6 +44,22 @@ class KeywordView(ViewSet):
         )
         serializer = KeywordSerializer(keyword)
         return Response(serializer.data)
+      
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        keyword = Keyword.objects.get(pk=pk)
+        keyword.target_keyword = request.data["target_keyword"]
+        
+        user = User.objects.get(pk=request.data["user_id"])
+        keyword.user_id = user
+        keyword.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class KeywordSerializer(serializers.ModelSerializer):
     """JSON serializer for game types

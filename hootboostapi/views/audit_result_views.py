@@ -53,6 +53,31 @@ class Audit_resultView(ViewSet):
         )
         serializer = Audit_resultSerializer(audit_result)
         return Response(serializer.data)
+      
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        audit_result = Audit_result.objects.get(pk=pk)
+        user = User.objects.get(pk=request.data["user_id"])
+        website = Website.objects.get(pk=request.data["website_id"])
+        # This might be wrong, if so try note_id?? 
+        notes = Notes.objects.get(pk=request.data["audit_notes"])
+        
+        audit_result.website_id = website
+        audit_result.title_tag = request.data["title_tag"]
+        audit_result.meta_desc_found = request.data["meta_desc_found"]
+        audit_result.keyword_page_frequency = request.data["keyword_page_frequency"]
+        audit_result.created_at = request.data["created_at"]
+        audit_result.score = request.data["score"]
+        audit_result.audit_notes = notes
+        audit_result.user_id = user
+        audit_result.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class Audit_resultSerializer(serializers.ModelSerializer):
     """JSON serializer for game types

@@ -44,6 +44,22 @@ class NotesView(ViewSet):
         )
         serializer = NotesSerializer(notes)
         return Response(serializer.data)
+      
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        notes = Notes.objects.get(pk=pk)
+        notes.note = request.data["note"]
+        
+        user = User.objects.get(pk=request.data["user_id"])
+        notes.user_id = user
+        notes.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class NotesSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
