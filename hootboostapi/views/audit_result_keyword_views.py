@@ -65,6 +65,11 @@ class Audit_Result_KeywordView(ViewSet):
         audit_result_keyword.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+      
+    def destroy(self, request, pk):
+        audit_result_keyword = Audit_Result_Keyword.objects.get(pk=pk)
+        audit_result_keyword.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
                 
 class Audit_Result_KeywordSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
