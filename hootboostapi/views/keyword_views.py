@@ -43,7 +43,7 @@ class KeywordView(ViewSet):
             user_id=user,
         )
         serializer = KeywordSerializer(keyword)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
       
     def update(self, request, pk):
         """Handle PUT requests for a game

@@ -52,7 +52,7 @@ class Audit_resultView(ViewSet):
             user_id=user
         )
         serializer = Audit_resultSerializer(audit_result)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
       
     def update(self, request, pk):
         """Handle PUT requests for a game
