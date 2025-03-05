@@ -8,7 +8,7 @@ HootBoost is a Django-powered backend application designed to help users evaluat
 
 GitHub Project Board: (https://github.com/users/TrevorMustoe/projects/7)
 
-Loom Video: [To be added]
+Postman Documentation: (https://documenter.getpostman.com/view/33852852/2sAYdiopqu)
 
 ## 👥 Target User
 This project is designed for:
