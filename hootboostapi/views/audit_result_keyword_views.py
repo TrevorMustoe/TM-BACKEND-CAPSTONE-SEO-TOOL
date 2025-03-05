@@ -45,7 +45,7 @@ class Audit_Result_KeywordView(ViewSet):
             audit_result=audit_result
         )
         serializer = Audit_Result_KeywordSerializer(audit_result_keyword)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
       
     def update(self, request, pk):
         """Handle PUT requests for a game
